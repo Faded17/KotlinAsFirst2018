@@ -230,7 +230,18 @@ fun revert(n: Int): Int = TODO()
  *
  * Использовать операции со строками в этой задаче запрещается.
  */
-fun isPalindrome(n: Int): Boolean = TODO()
+fun isPalindrome(n: Int): Boolean {
+    var number = n
+    while (number != 0) {
+        val beginCount = number / (Math.pow(10.0, (digitNumber(number) - 1).toDouble()).toInt())
+        val endCount = number % 10
+        if (beginCount != endCount) return false
+        number -= beginCount * (Math.pow(10.0, (digitNumber(number) - 1).toDouble()).toInt())
+        number /= 10
+
+    }
+    return true
+}
 
 /**
  * Средняя
@@ -240,16 +251,16 @@ fun isPalindrome(n: Int): Boolean = TODO()
  *
  * Использовать операции со строками в этой задаче запрещается.
  */
-fun hasDifferentDigits(n: Int): Boolean = TODO() //    var number = n
-    //var lastNumber = n % 10
+fun hasDifferentDigits(n: Int): Boolean  {
+    var number = n
+    while (number >= 10) {
+        val lastNumber = number % 10
+        if (lastNumber != (number / 10) %10) return true
+        number = number / 10
+    }
+    return false
 
- //   while (number != 0 ){
- //       if (((number / 10) % 10) == lastNumber) true
-  //      number /=10
-   //     lastNumber = number % 10
- //   }
- //   return false
-//}
+}
 
 /**
  * Сложная
@@ -260,7 +271,7 @@ fun hasDifferentDigits(n: Int): Boolean = TODO() //    var number = n
  *
  * Использовать операции со строками в этой задаче запрещается.
  */
-fun squareSequenceDigit(n: Int): Int = TODO()
+fun squareSequenceDigit(n: Int): Int = TODO ()
 
 /**
  * Сложная
