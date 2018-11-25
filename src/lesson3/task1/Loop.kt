@@ -88,10 +88,12 @@ fun digitNumber(n: Int): Int {
 fun fib(n: Int): Int {
     var firstNumber = 1
     var secondNumber = 2
+    var oldFirstNumber: Int
     if (n < 3) return firstNumber
     else {
         for (i in 3 until n) {
-            var oldFirstNumber: Int
+
+
             oldFirstNumber = firstNumber
             firstNumber = secondNumber
             secondNumber += oldFirstNumber
@@ -136,14 +138,7 @@ fun minDivisor(n: Int): Int {
  *
  * Для заданного числа n > 1 найти максимальный делитель, меньший n
  */
-fun maxDivisor(n: Int): Int {
-    if (isPrime(n)) return 1
-    var maxDiv = n - 1
-    while (n % maxDiv != 0) {
-        maxDiv--
-    }
-    return maxDiv
-}
+fun maxDivisor(n: Int): Int = n / minDivisor(n)
 
 
 /**
@@ -251,12 +246,12 @@ fun isPalindrome(n: Int): Boolean {
  *
  * Использовать операции со строками в этой задаче запрещается.
  */
-fun hasDifferentDigits(n: Int): Boolean  {
+fun hasDifferentDigits(n: Int): Boolean {
     var number = n
     while (number >= 10) {
         val lastNumber = number % 10
-        if (lastNumber != (number / 10) %10) return true
-        number = number / 10
+        if (lastNumber != (number / 10) % 10) return true
+        number /= 10
     }
     return false
 
@@ -271,7 +266,7 @@ fun hasDifferentDigits(n: Int): Boolean  {
  *
  * Использовать операции со строками в этой задаче запрещается.
  */
-fun squareSequenceDigit(n: Int): Int = TODO ()
+fun squareSequenceDigit(n: Int): Int = TODO()
 
 /**
  * Сложная

@@ -203,6 +203,7 @@ class Tests {
     @Test
     @Tag("Normal")
     fun isPalindrome() {
+        assertTrue(isPalindrome(340858043))
         assertTrue(isPalindrome(3))
         assertFalse(isPalindrome(3653))
         assertTrue(isPalindrome(15751))
