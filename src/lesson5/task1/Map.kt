@@ -119,12 +119,7 @@ fun buildGrades(grades: Map<String, Int>): Map<Int, List<String>> = TODO()
  *   containsIn(mapOf("a" to "z"), mapOf("a" to "z", "b" to "sweet")) -> true
  *   containsIn(mapOf("a" to "z"), mapOf("a" to "zee", "b" to "sweet")) -> false
  */
-fun containsIn(a: Map<String, String>, b: Map<String, String>): Boolean {
-    a.entries.forEach {
-        if (!b.entries.contains(it)) return false
-    }
-    return true
-}
+fun containsIn(a: Map<String, String>, b: Map<String, String>): Boolean = b + a == b
 
 /**
  * Средняя
@@ -137,6 +132,7 @@ fun containsIn(a: Map<String, String>, b: Map<String, String>): Boolean {
  *     -> mapOf("MSFT" to 150.0, "NFLX" to 40.0)
  */
 fun averageStockPrice(stockPrices: List<Pair<String, Double>>): Map<String, Double> = TODO()
+
 
 /**
  * Средняя
@@ -202,7 +198,14 @@ fun subtractOf(a: MutableMap<String, String>, b: Map<String, String>): Unit = TO
  *
  * Для двух списков людей найти людей, встречающихся в обоих списках
  */
-fun whoAreInBoth(a: List<String>, b: List<String>): List<String> = TODO()
+fun whoAreInBoth(a: List<String>, b: List<String>): List<String> {
+    var result = mutableListOf<String>()
+    for (i in 0 until b.size) {
+        if (a.contains(b[i])) result.add(b[i])
+    }
+    return result
+}
+
 
 /**
  * Средняя
@@ -227,8 +230,23 @@ fun canBuildFrom(chars: List<Char>, word: String): Boolean = TODO()
  * Например:
  *   extractRepeats(listOf("a", "b", "a")) -> mapOf("a" to 2)
  */
-fun extractRepeats(list: List<String>): Map<String, Int> = TODO()
+fun extractRepeats(list: List<String>): Map<String, Int> {
+    var result = hashMapOf<String, Int>()
+    var copyOfList = list.toMutableList()
 
+    while (copyOfList.isNotEmpty()) {
+        var k = copyOfList.get(0)
+        copyOfList.removeAt(0)
+        var count = 1
+        while (copyOfList.contains(k)) {
+            var temp = copyOfList.indexOf(k)
+            copyOfList.removeAt(temp)
+            count++
+        }
+        if (count > 1) result.put(k, count)
+    }
+    return result
+}
 /**
  * Средняя
  *

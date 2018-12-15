@@ -88,12 +88,11 @@ fun digitNumber(n: Int): Int {
 fun fib(n: Int): Int {
     var firstNumber = 1
     var secondNumber = 2
-    var oldFirstNumber: Int
+
     if (n < 3) return firstNumber
     else {
         for (i in 3 until n) {
-
-
+            val oldFirstNumber: Int
             oldFirstNumber = firstNumber
             firstNumber = secondNumber
             secondNumber += oldFirstNumber
