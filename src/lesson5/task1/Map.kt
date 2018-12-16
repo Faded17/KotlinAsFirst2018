@@ -119,7 +119,7 @@ fun buildGrades(grades: Map<String, Int>): Map<Int, List<String>> = TODO()
  *   containsIn(mapOf("a" to "z"), mapOf("a" to "z", "b" to "sweet")) -> true
  *   containsIn(mapOf("a" to "z"), mapOf("a" to "zee", "b" to "sweet")) -> false
  */
-fun containsIn(a: Map<String, String>, b: Map<String, String>): Boolean = b + a == b
+fun containsIn(a: Map<String, String>, b: Map<String, String>): Boolean = a.all { b[it.key] == it.value }
 
 /**
  * Средняя
@@ -199,7 +199,7 @@ fun subtractOf(a: MutableMap<String, String>, b: Map<String, String>): Unit = TO
  * Для двух списков людей найти людей, встречающихся в обоих списках
  */
 fun whoAreInBoth(a: List<String>, b: List<String>): List<String> {
-    var result = mutableListOf<String>()
+    val result = mutableListOf<String>()
     for (i in 0 until b.size) {
         if (a.contains(b[i])) result.add(b[i])
     }
@@ -231,15 +231,15 @@ fun canBuildFrom(chars: List<Char>, word: String): Boolean = TODO()
  *   extractRepeats(listOf("a", "b", "a")) -> mapOf("a" to 2)
  */
 fun extractRepeats(list: List<String>): Map<String, Int> {
-    var result = hashMapOf<String, Int>()
-    var copyOfList = list.toMutableList()
+    val result = hashMapOf<String, Int>()
+    val copyOfList = list.toMutableList()
 
     while (copyOfList.isNotEmpty()) {
-        var k = copyOfList.get(0)
+        val k = copyOfList.get(0)
         copyOfList.removeAt(0)
         var count = 1
         while (copyOfList.contains(k)) {
-            var temp = copyOfList.indexOf(k)
+            val temp = copyOfList.indexOf(k)
             copyOfList.removeAt(temp)
             count++
         }

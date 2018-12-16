@@ -213,7 +213,17 @@ fun cos(x: Double, eps: Double): Double = TODO()
  *
  * Использовать операции со строками в этой задаче запрещается.
  */
-fun revert(n: Int): Int = TODO()
+fun revert(n: Int): Int {
+    var number = n
+    var remainderOfDivision: Int
+    var result = 0
+    while (number > 0) {
+        remainderOfDivision = number % 10
+        result = result * 10 + remainderOfDivision
+        number /= 10
+    }
+    return result
+}
 
 /**
  * Средняя
@@ -224,19 +234,7 @@ fun revert(n: Int): Int = TODO()
  *
  * Использовать операции со строками в этой задаче запрещается.
  */
-fun isPalindrome(n: Int): Boolean {
-    var number = n
-    while (number != 0) {
-        val beginCount = number / (Math.pow(10.0, (digitNumber(number) - 1).toDouble()).toInt())
-        val endCount = number % 10
-        if (beginCount != endCount) return false
-        number -= beginCount * (Math.pow(10.0, (digitNumber(number) - 1).toDouble()).toInt())
-        number /= 10
-
-    }
-    return true
-}
-
+fun isPalindrome(n: Int): Boolean = (n == revert(n))
 /**
  * Средняя
  *
