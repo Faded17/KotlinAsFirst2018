@@ -115,13 +115,9 @@ fun buildSumExample(list: List<Int>) = list.joinToString(separator = " + ", post
  * Найти модуль заданного вектора, представленного в виде списка v,
  * по формуле abs = sqrt(a1^2 + a2^2 + ... + aN^2).
  * Модуль пустого вектора считать равным 0.0.
- */
-fun abs(v: List<Double>): Double {
-    val sqrList = v.map {it * it}
-    val sumOfSqr = sqrList.sum()
-return sumOfSqr
+*/
+fun abs(v: List<Double>): Double = sqrt(v.sumByDouble { it * it })
 
-}
 
 /**
  * Простая
@@ -152,11 +148,8 @@ fun center(list: MutableList<Double>): MutableList<Double> {
  * C = a1b1 + a2b2 + ... + aNbN. Произведение пустых векторов считать равным 0.0.
  */
 fun times(a: List<Double>, b: List<Double>): Double = TODO()
-/**  var result = mutableListOf<Double>(for (i in 0 until a.size) {result = a[i] * b[i]
-}
-return result.sum()
-}*
-*/
+
+
 /**
  * Средняя
  *
