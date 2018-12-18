@@ -64,13 +64,11 @@ fun minBiRoot(a: Double, b: Double, c: Double): Double {
  * Мой возраст. Для заданного 0 < n < 200, рассматриваемого как возраст человека,
  * вернуть строку вида: «21 год», «32 года», «12 лет».
  */
-fun ageDescription(age: Int): String =
-        when {
-            (age % 10 == 1 && age % 100 != 11) -> "$age год"
-            (age % 10 in 2..4 && (age % 100 !in 12..14)) -> "$age года"
-            else -> "$age лет"
-        }
-
+fun ageDescription(age: Int): String = when {
+    (age % 10 == 1 && age % 100 != 11) -> "$age год"
+    (age % 10 in 2..4 && (age % 100 !in 12..14)) -> "$age года"
+    else -> "$age лет"
+}
 
 /**
  * Простая
@@ -86,10 +84,14 @@ fun timeForHalfWay(t1: Double, v1: Double,
     val s2 = (t2 * v2)
     val s3 = (t3 * v3)
     val halfS = (s1 + s2 + s3) / 2
-    if (halfS <= s1) halfS / v1
-    return if (halfS - s1 < s2) (halfS - s1) / v2 + t1
-    else (halfS - s1 - s2) / v3 + t1 + t2
+    return when {
+        (halfS < s1) -> halfS / v1
+        (halfS - s1 < s2) -> (halfS - s1) / v2 + t1
+        else -> (halfS - s1 - s2) / v3 + t1 + t2
+    }
+
 }
+
 /**
  * if (halfS <= s1) return halfS / v1
 return if (halfS - s1 < s2) (halfS - s1) / v2 + t1
@@ -172,7 +174,6 @@ fun segmentLength(a: Int, b: Int, c: Int, d: Int): Int = when {
     (minOf(b, d) - maxOf(a, c)) >= 0 -> minOf(b, d) - maxOf(a, c)
     else -> -1
 }
-
 
 
 

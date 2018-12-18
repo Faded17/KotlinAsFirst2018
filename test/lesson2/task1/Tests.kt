@@ -48,6 +48,7 @@ class Tests {
         assertEquals(2.5, timeForHalfWay(1.0, 5.0, 2.0, 4.0, 3.0, 3.0), 1e-2)
         assertEquals(3.67, timeForHalfWay(4.0, 3.0, 1.0, 4.0, 1.0, 6.0), 1e-2)
         assertEquals(4.4, timeForHalfWay(3.0, 0.0, 1.0, 6.0, 2.0, 5.0), 1e-2)
+        assertEquals(1.8379629629629628, timeForHalfWay(2.533333333333333, 9.0, 1.0666666666666666, 1.0, 9.216666666666666, 1.0), 1e-2)
     }
 
     @Test
