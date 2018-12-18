@@ -2,6 +2,7 @@
 
 package lesson3.task1
 
+import lesson1.task1.sqr
 import kotlin.math.floor
 import kotlin.math.min
 import kotlin.math.sqrt
@@ -262,7 +263,17 @@ fun hasDifferentDigits(n: Int): Boolean {
  *
  * Использовать операции со строками в этой задаче запрещается.
  */
-fun squareSequenceDigit(n: Int): Int = TODO()
+fun squareSequenceDigit(n: Int): Int {
+    var digit = 0
+    var a = 1
+    var count = 0
+    while (count < n) {
+        digit += 1
+        count += digitNumber(sqr(digit))
+    }
+    for (i in 1..count - n) a *= 10
+    return digit * digit / a % 10
+}
 
 /**
  * Сложная

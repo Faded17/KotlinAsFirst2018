@@ -2,6 +2,8 @@
 
 package lesson6.task1
 
+import lesson2.task2.daysInMonth
+
 /**
  * Пример
  *
@@ -70,7 +72,6 @@ fun main(args: Array<String>) {
  * входными данными.
  */
 fun dateStrToDigit(str: String): String = TODO()
-
 /**
  * Средняя
  *
@@ -95,7 +96,17 @@ fun dateDigitToStr(digital: String): String = TODO()
  * Все символы в номере, кроме цифр, пробелов и +-(), считать недопустимыми.
  * При неверном формате вернуть пустую строку
  */
-fun flattenPhoneNumber(phone: String): String = TODO()
+fun flattenPhoneNumber(phone: String): String {
+    val phoneFilter = phone.filter { (it != '-') && (it != ' ') && (it != '(') && (it != ')') }
+    val result1 = Regex("""([0-9])""").find(phoneFilter)
+    val matchResult2 = Regex("""([^0-9+])""").find(phoneFilter)
+    val result: String
+    result = when {
+        (matchResult2 != null || result1 == null) -> ""
+        else -> phoneFilter
+    }
+    return result
+}
 
 /**
  * Средняя
@@ -108,7 +119,6 @@ fun flattenPhoneNumber(phone: String): String = TODO()
  * При нарушении формата входной строки или при отсутствии в ней чисел, вернуть -1.
  */
 fun bestLongJump(jumps: String): Int = TODO()
-
 /**
  * Сложная
  *
