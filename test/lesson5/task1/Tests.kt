@@ -310,6 +310,13 @@ class Tests {
                 findSumOfTwo(listOf(0), 0)
         )
         assertEquals(
+                Pair(-1, -1),
+                findSumOfTwo(listOf( 1,
+                        12036,
+                        5043,
+                        0), 0)
+        )
+        assertEquals(
                 Pair(105, 119),
                 findSumOfTwo(listOf(40700,
                         40700,
