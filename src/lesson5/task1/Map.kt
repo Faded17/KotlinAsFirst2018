@@ -276,11 +276,19 @@ fun findSumOfTwo(list: List<Int>, number: Int): Pair<Int, Int> {
     for (i in 0 until list.size) {
         diff = number - list[i]
         if (diff >= 0) {
-            if (diff in list) result = Pair(i, list.indexOf(diff))
-            break
+            if (diff in list) {
+                result = Pair(i, list.indexOf(diff))
+                break
+            }
+
         }
+
+
     }
-    return result
+
+
+
+return result
 }
 
 
