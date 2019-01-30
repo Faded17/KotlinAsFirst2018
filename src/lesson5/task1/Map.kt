@@ -225,22 +225,16 @@ fun canBuildFrom(chars: List<Char>, word: String): Boolean = TODO()
  */
 fun extractRepeats(list: List<String>): Map<String, Int> {
     val result = hashMapOf<String, Int>()
-    val copyOfList = list.toMutableList()
-
-    while (copyOfList.isNotEmpty()) {
-        val k = copyOfList[0]
-        copyOfList.removeAt(0)
-        var count = 1
-        while (copyOfList.contains(k)) {
-            val temp = copyOfList.indexOf(k)
-            copyOfList.removeAt(temp)
-            count++
-        }
-        if (count > 1) result[k] = count
+    for (e in list) {
+        if (result.containsKey(e)) {
+            val temp = result.getValue(e) + 1
+            result.put(e, temp)
+        } else
+            result.put(e, 1)
     }
-    return result
-}
 
+    return result.filterValues { it > 1 }
+}
 /**
  * Средняя
  *

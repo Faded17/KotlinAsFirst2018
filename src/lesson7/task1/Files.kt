@@ -54,14 +54,14 @@ fun alignFile(inputName: String, lineLength: Int, outputName: String) {
  * Регистр букв игнорировать, то есть буквы е и Е считать одинаковыми.
  *
  */
-fun countSubstrings(inputName: String, substrings: List<String>): Map<String, Int>  {
+fun countSubstrings(inputName: String, substrings: List<String>): Map<String, Int> {
     val result = mutableMapOf<String, Int>()
     for (string in substrings) {
         var count = 0
         for (line in File(inputName).readLines()) {
             count += string.toLowerCase().toRegex().findAll(line.toLowerCase()).count()
         }
-        result.put(string,count)
+        result.put(string, count)
     }
     return result
 }
@@ -80,28 +80,13 @@ fun countSubstrings(inputName: String, substrings: List<String>): Map<String, In
  * Исключения (жюри, брошюра, парашют) в рамках данного задания обрабатывать не нужно
  *
  */
+
 fun sibilants(inputName: String, outputName: String) {
-    val outputStream = File(outputName).bufferedWriter()
-    var lineList = listOf<String>()
-    for (line in File(inputName).readLines()) {
-        lineList += line
-    }
-    for (line in lineList) {
-        if (line != lineList[0]) outputStream.newLine()
-        val currentLine = (Regex("""(?<=[ЖжЧчШшЩщ])[ЫыЯяЮю]""")).replace(line) { t ->
-            when (t.value) {
-                "ы" -> "и"
-                "Ы" -> "И"
-                "Я" -> "А"
-                "я" -> "а"
-                "Ю" -> "У"
-                else -> "у"
-            }
-        }
-        outputStream.write(currentLine)
-    }
-    outputStream.close()
+
+    TODO()
+
 }
+
 /**
  * Средняя
  *
@@ -120,7 +105,18 @@ fun sibilants(inputName: String, outputName: String) {
  *
  */
 fun centerFile(inputName: String, outputName: String) {
-    TODO()
+    val writer = File(outputName).bufferedWriter()
+    var maxLineLength = 0
+    for (line in File(inputName).readLines())
+        if (line.length > maxLineLength)
+            maxLineLength = line.length
+    for (line in File(inputName).readLines()) {
+        for (i in 0 until (maxLineLength - line.trim().length) / 2)
+            writer.write(" ")
+        writer.write(line.trim())
+        writer.newLine()
+    }
+    writer.close()
 }
 
 /**
