@@ -82,10 +82,30 @@ fun countSubstrings(inputName: String, substrings: List<String>): Map<String, In
  */
 
 fun sibilants(inputName: String, outputName: String) {
-
-    TODO()
-
+    val outputStream = File(outputName).bufferedWriter()
+    var count = 1
+    for (line in File(inputName).readLines()) {
+        if (count == 0) {
+            outputStream.newLine()
+        } else {
+            count--
+        }
+        val currentLine = (Regex("""(?<=[ЖжЧчШшЩщ])[ЫыЯяЮю]""")).replace(line) { t ->
+            when (t.value) {
+                "ы" -> "и"
+                "Ы" -> "И"
+                "Я" -> "А"
+                "я" -> "а"
+                "Ю" -> "У"
+                else -> "у"
+            }
+        }
+        outputStream.write(currentLine)
+    }
+    outputStream.close()
 }
+
+
 
 /**
  * Средняя
