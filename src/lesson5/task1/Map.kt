@@ -96,7 +96,9 @@ fun buildWordSet(text: List<String>): MutableSet<String> {
  *     mapOf("Emergency" to "911", "Police" to "02")
  *   ) -> mapOf("Emergency" to "112, 911", "Police" to "02")
  */
-fun mergePhoneBooks(mapA: Map<String, String>, mapB: Map<String, String>): Map<String, String> = TODO()
+fun mergePhoneBooks(mapA: Map<String, String>, mapB: Map<String, String>): Map<String, String> {
+    TODO()
+}
 
 /**
  * Простая
@@ -201,6 +203,7 @@ fun subtractOf(a: MutableMap<String, String>, b: Map<String, String>) = a.keys.r
  * Для двух списков людей найти людей, встречающихся в обоих списках
  */
 fun whoAreInBoth(a: List<String>, b: List<String>): List<String> = a.intersect(b).toList()
+
 /**
  * Средняя
  *
@@ -211,6 +214,13 @@ fun whoAreInBoth(a: List<String>, b: List<String>): List<String> = a.intersect(b
  *   canBuildFrom(listOf('a', 'b', 'o'), "baobab") -> true
  */
 fun canBuildFrom(chars: List<Char>, word: String): Boolean = TODO()
+
+/** for (char in 0 until chars.size - 1) {
+if (char in word)
+}
+
+ */
+
 /**
  * Средняя
  *
@@ -235,6 +245,7 @@ fun extractRepeats(list: List<String>): Map<String, Int> {
 
     return result.filterValues { it > 1 }
 }
+
 /**
  * Средняя
  *
