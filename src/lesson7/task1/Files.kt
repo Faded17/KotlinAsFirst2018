@@ -54,9 +54,9 @@ fun alignFile(inputName: String, lineLength: Int, outputName: String) {
  *
  */
 fun countSubstrings(inputName: String, substrings: List<String>): Map<String, Int> {
-    TODO()
-}
 
+   TODO()
+}
 
 
 /**
@@ -74,7 +74,9 @@ fun countSubstrings(inputName: String, substrings: List<String>): Map<String, In
  */
 
 fun sibilants(inputName: String, outputName: String) {
+
     TODO()
+
 }
 
 /**
@@ -95,25 +97,23 @@ fun sibilants(inputName: String, outputName: String) {
  *
  */
 fun centerFile(inputName: String, outputName: String) {
-    var length1 = 0
-    val outStr = File(outputName).printWriter()
-
+    val outputStream = File(outputName).printWriter()
+    var maxLength = 0
     for (line in File(inputName).readLines())
-        if (line.trim().length > length1) length1 = line.trim().length
+        if (line.trim().length > maxLength) maxLength = line.trim().length
     for (line in File(inputName).readLines()) {
         val builder = StringBuilder()
-        if (line.isEmpty())
-            builder.append(" ".repeat(length1 / 2)) else {
-            builder.append(" ".repeat((length1 - line.trim().length) / 2))
-            builder.append(line.trim())
-
+        when {
+            (line.isEmpty()) -> builder.append(" ".repeat(maxLength / 2))
+            else -> {
+                builder.append(" ".repeat((maxLength - line.trim().length) / 2))
+                builder.append(line.trim())
+            }
         }
-        outStr.println(builder)
+        outputStream.println(builder)
     }
-    outStr.close()
-
+    outputStream.close()
 }
-
 /**
  * Сложная
  *
